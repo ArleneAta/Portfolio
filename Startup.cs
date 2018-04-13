@@ -29,11 +29,11 @@ namespace Portfolio
         {
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-            //services.AddIdentity<ApplicationUser, IdentityRole>(config =>
-            //{
-            //    config.SignIn.RequireConfirmedEmail = true;
-            //})
+            //services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<ApplicationUser, IdentityRole>(config =>
+            {
+                config.SignIn.RequireConfirmedEmail = true;
+            })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
             //commented out email verification for testing

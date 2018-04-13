@@ -9,10 +9,10 @@ namespace Portfolio.Models
     public class SalesHistoryVM
     {
         [Key]
-        [Display(Name = "User ID")]
-        public string UserId { get; set; }
-        public string Role { get; set; }
+        public string Email { get; set; }
         public int PurchasedId { get; set; }
+        public string Role { get; set; } 
+        public string Title { get; set; }
         public int EventId { get; set; }
         [Display(Name = "Purchase Amount")]
         public decimal PurchaseAmount { get; set; }

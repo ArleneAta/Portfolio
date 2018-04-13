@@ -34,6 +34,16 @@ namespace Portfolio.Controllers
         {
             return View();
         }
+        public IActionResult SalesHistory(string email)
+        {
+            //var id = userManager.GetUserId(currentuser);
+
+            //var customer = dbcontext.Roles.Where(c => c.Id == "Customer");
+            //var purchased = dbcontext.PurchasedTickets.Where(p => p.EventId ==)
+
+
+            return View();
+        }
 
         public IActionResult Payment(string stripeEmail, string stripeToken, int amount, decimal amountDollars, int eventId)
         {

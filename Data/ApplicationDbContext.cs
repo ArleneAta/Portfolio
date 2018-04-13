@@ -50,10 +50,9 @@ namespace Portfolio.Data
     public class PurchasedTicket
     {
         [Key]
-        public int PurchasedId { get; set; }
-
         public int EventId { get; set; }
 
+      
         //[Display(Name = "Transaction ID")]
         //public string TransactionID { get; set; }
 
