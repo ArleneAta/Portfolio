@@ -1,0 +1,35 @@
+﻿nav .container {
+    height: 90px;
+}
+
+.qlogo {
+    width: 50px;
+    height: auto;
+}
+
+nav.navbar {
+    height: 90px;
+}
+a.navbar-brand {
+    display: inline-flex;
+    height: 90px;
+    align-items: flex-end;
+}
+.navbar-header {
+    font-style: italic;
+}
+ul.nav {
+    margin-top: 40px;
+}
+.home-row {
+    margin: 4em;
+}
+.home col-md-6{
+    border: 1px solid black;
+}
+.body-content {
+    margin-top: 40px;
+}
+.carousel-inner {
+    object-fit:cover;
+}

@@ -1,0 +1,114 @@
+﻿@model IEnumerable<Portfolio.Data.Event>
+
+@using Microsoft.Extensions.Options
+@inject IOptions<StripeSettings> Stripe
+@inject SignInManager<ApplicationUser> SignInManager
+
+@{
+    ViewData["Title"] = "EventsList";
+}
+@* style="width:150px" *@
+<h1 class="text-center">Events</h1>
+<div class="container-fluid">
+    <div class="row eventsRow">
+        @foreach (var item in Model)
+        {
+        <div class="col-sm-3 eventItem">
+            <a asp-action="Details" asp-route-id="@item.EventId" name="id" asp-controller="Events">
+                <img src="@Html.DisplayFor(modelItem => item.ImageURL)" width="100px">
+                <p>@Html.DisplayNameFor(model => model.Title):      @Html.DisplayFor(modelItem => item.Title)</p>
+                <p>@Html.DisplayNameFor(model => model.Date):      @Html.DisplayFor(modelItem => item.Date)</p>
+                <p>@Html.DisplayNameFor(model => model.StartTime):  @Html.DisplayFor(modelItem => item.StartTime)</p>
+                <p>@Html.DisplayNameFor(model => model.Price) :     @Html.DisplayFor(modelItem => item.Price)</p>
+            </a>
+            @{
+        if (SignInManager.IsSignedIn(User))
+        {
+            <form action="/Payments/Payment?amount=6500&amountDollars=65.00&eventId=@item.EventId" method="POST">
+                <article>
+                    <label>@Html.DisplayNameFor(model => model.Price) : @Html.DisplayFor(modelItem => item.Price)</label>
+                </article>
+                <script src="//checkout.stripe.com/v2/checkout.js"
+                        class="stripe-button"
+                        data-key="@Stripe.Value.PublishableKey"
+                        data-locale="auto"
+                        data-description="Sample Charge"
+                        data-amount="6500">
+                </script>
+            </form>
+}
+else
+{
+        <a asp-action="Login" asp-route-id="" name="id" asp-controller="Account">
+            <button class="btn btn-info">Please login to Purchase</button>
+        </a>
+            }
+            }
+        </div>
+        }
+    </div>
+    <img class="img-responsive eventslist" src="~/images/9569282460_865f26f704_b.jpg" />
+
+</div>
+
+@*<table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StartTime)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.MaxSeats)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ImageURL)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaxSeats)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ImageURL)
+                    </td>
+                    <td>
+
+                        <a asp-action="Details" asp-route-id="@item.EventId">Details</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@

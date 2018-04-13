@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "About";
+}
+
+@using Microsoft.Extensions.Options
+@inject IOptions<StripeSettings> Stripe
+
+<h2 class="about">@ViewData["Title"]</h2>
+
+<p class=" about">The Queen's Theatre is a West End theatre located in Shaftesbury Avenue on the corner of Wardour Street in the City of Westminster, London. It opened on 8 October 1907 as a twin to the neighbouring Hicks Theatre (now the Gielgud Theatre) which had opened ten months earlier. Both theatres were designed by W. G. R. Sprague.</p>
+
+<img class="img-responsive" src="~/images/banner.jpeg" alt="Alternate Text" />
+
+@*<form action="/Payments/Payment" method="POST">
+    <article>
+        <label>Amount: $10.00</label>
+    </article>
+    <script src="//checkout.stripe.com/v2/checkout.js"
+            class="stripe-button"
+            data-key="@Stripe.Value.PublishableKey"
+            data-locale="auto"
+            data-description="Sample Charge"
+            data-amount="1000">
+    </script>
+</form>*@

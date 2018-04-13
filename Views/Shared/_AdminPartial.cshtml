@@ -1,0 +1,26 @@
+﻿
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<ul class="nav navbar-nav">
+    @{
+
+        if (User.IsInRole("Admin"))
+
+        {
+            <li><a asp-area="" asp-controller="Events" asp-action="Index">Events(Admin)</a></li>
+            <li><a asp-area="" asp-controller="Role" asp-action="Index">Roles</a></li>
+            <li><a asp-area="" asp-controller="UserRole" asp-action="Index">User Roles</a></li>
+            <li><a asp-area="" asp-controller="UserRole" asp-action="List">User List</a></li>
+        }
+        else
+        {
+           
+            <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
+            <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+            <li><a asp-area="" asp-controller="Events" asp-action="EventsList">Events</a></li>
+
+        }
+
+    }
+</ul>
